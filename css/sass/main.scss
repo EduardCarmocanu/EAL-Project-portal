@@ -1,0 +1,594 @@
+@import url('https://necolas.github.io/normalize.css/6.0.0/normalize.css');
+@import "_prestyling.scss";
+@import "_colors.scss";
+@import "_fonts.scss";
+@import "_mixins.scss";
+
+// ALL IMPORTS ABOVE THIS LINE
+
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+body {
+	font-family: $mainFont;
+	overflow-x: hidden;
+	ul {
+	list-style: none;
+	}
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+	hr {
+		opacity: 0.1;
+		margin-top: 1vh;
+		// height: 1px;
+	}
+	input {
+		border: none;
+		border-radius: none;
+	}
+	.lighter {
+		color: rgb(130, 130, 130);
+	}
+	.keyword {
+		color: $ternary;
+	}
+}
+
+
+nav, #side-menu {
+	display: inline-block;
+}
+
+nav {
+	width: 100%;
+	position: fixed;
+	color: white;
+	ul {
+		background-color: $ternary;
+		width: 100%;
+		margin: 0;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		#top-nav-elements-container {
+			width: 100%;
+			li {
+				display: inline-block;
+				padding: 15px;
+				cursor: pointer;
+			}
+			li:hover {
+				background-color: $primary;
+			}
+			.menu-item{
+				-webkit-transition: background-color 0.1s ease-in-out, margin-left 0.2s ease-in;
+				-moz-transition: background-color 0.1s ease-in-out, margin-left 0.2s ease-in;
+				-ms-transition: background-color 0.1s ease-in-out, margin-left 0.2s ease-in;
+				transition: background-color 0.1s ease-in-out, margin-left 0.2s ease-in;
+			}
+			.nav-right {
+				float: right
+			}
+			#search {
+				padding: 0;
+				font-family: 'FontAwesome';
+			}
+			#search:hover {
+				background-color: $ternary;
+			}
+			#search-input {
+				margin-right: 10px;
+				text-align: center;
+				padding: 1vh;
+				border-radius: 15px;
+				margin-top: 1.3vh;
+				background-color: lighten($ternary, 20);
+				// color: white;
+				outline: none;		
+			}
+		}
+		
+	}
+}
+
+
+
+#side-menu {
+	position: fixed;
+	width: 20%;
+	margin-left: -20vw;
+	float: left;
+	height: 105vh;
+	border-right: 1px solid rgba(30, 30, 30, 0.1);
+	background-color: rgb(240, 240, 240);
+	@include transition(0.2s, margin-left);
+	li {
+		width: 100%;
+	}
+	#user {
+		@include transition(0.1s, background-color);
+	}
+	#user:hover {
+		background-color: lighten($ternary, 1);
+		color: white;
+	}
+	#user {
+		padding: 2vh;
+		height: 80px;
+
+		img {
+			width: 50px;
+		}
+		img, p {
+			display: inline-block;
+			float: left;
+		}
+		p {
+			font-size: $fontSize;
+			margin-top: 7px;
+		}
+		#role {
+			font-size: $fontSize;
+			margin-left: 20px;
+			margin-top: 0px;
+		}
+	}
+	#logo {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		padding: 5vh;
+		background-color: $primary;
+		img {
+			width: 50%;
+			height: 50%;
+		}
+	}
+	.filter-programs {
+		padding: 2vh;
+		li {
+			@include transition(0.1s, background-color);
+		}
+		li:hover {
+			background-color: lighten($ternary, 1);
+			color: white;
+		}
+		h3 {
+
+		}
+		ul li {
+			padding: 1vh 1vh 1vh 3vh;
+			label{
+				display: inline-block;
+				width: 80%;
+				font-size: 0.8em;
+				// cursor: pointer;
+			}
+			input, label {
+				cursor: pointer;
+			}
+		}
+	}
+	.filter-year, .filter-grade {
+		ul {
+			width: 100%;
+			:hover {
+				cursor: pointer;
+			}
+			select {
+				border: none;
+				border-top: 1px solid rgba(30, 30, 30, 0.1);
+				padding: 2vh;
+				width: 100%;
+				background-color: rgb(240, 240, 240);
+				cursor: pointer;
+			}
+			#submit {
+				width: 100%;
+				height: 70px;
+				background-color: $primary;
+				color: white;
+				@include transition(0.1s, background-color);
+			}
+			#submit:hover {
+				background-color: $ternary;
+			}
+		}
+		
+	}
+}
+
+
+.inputFile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.inputFile + label {
+   
+    font-weight: 700;
+    width: 80%;
+
+    text-align: center;
+    height: 50vh;
+    color: white;
+
+    display: inline-block;
+}
+
+.inputFile:focus + label,
+.inputFile + label:hover {
+    background-color: red;
+}
+.inputFile + label {
+	cursor: pointer; 
+}
+
+.upload-content {
+	width: 90%;
+	margin: 0 auto;
+	overflow: hidden;
+
+	form {
+		padding-bottom: 5vh;
+		h2, h4 {
+			color: $fontColor;
+		}
+	}
+	.box + .box {
+		margin-top: 2.5rem;
+	}
+	.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+	}
+
+	.inputfile + label {
+	    font-size: 1.2em;
+	    font-weight: 700;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	    cursor: pointer;
+	    display: inline-block;
+	    overflow: hidden;
+	    padding: 10% 40.5% 10% 40.5%;
+	    width: 100%;
+	    height: 40vh;
+		border-radius: 5px;
+
+	}
+
+	.inputfile + label svg {
+	    width: 1em;
+	    height: 1em;
+	    vertical-align: middle;
+	    fill: $ternary;
+	    margin-top: -0.25em;
+	    margin-right: 0.25em;
+	}
+
+	.inputfile + label {
+	    color: $ternary;
+	    border: 5px dashed darken($white, 5);
+	}
+
+	.inputfile:focus + label,
+	.inputfile.has-focus + label,
+	.inputfile + label:hover {
+	    color: $primary;
+	}
+
+	#proj-title{
+		margin-top: 20px;
+		background-color: $white;
+		padding: 2vh;
+		font-size: $inputFontSize;
+		@include border-radius();
+		// margin: 0;
+		width: 49.6%;
+		height: 8vh;
+	}
+	#proj-tags{
+		@extend #proj-title;
+	}
+	#proj-description {
+		@extend #proj-title;
+		width: 99.6%;
+	}
+	textarea {
+		width: 99.6%;
+		margin-top: 20px;
+		height: 30vh;
+		outline: none;
+		border: none;
+		@include border-radius();
+		background-color: $white;
+		padding: 2vh;
+		font-size: $inputFontSize;
+		font-family: $mainFont;
+		resize: none;
+	}
+	.final-uploads {
+		width: 99.6%;
+		button {
+			float: right;
+			padding: 2vh;
+			margin: 2vh;
+			background-color: $primary;
+			border: none;
+			color: white;
+			font-size: $inputFontSize;
+			@include border-radius();
+			@include transition(0.2s, box-shadow);
+
+		}
+		button:hover {
+			@include button-box-shadow($ternary);
+			// background-color: $primary;
+			cursor: pointer;
+		}
+		#proj_cover {
+			display: none;
+		}
+		label {
+			@extend button;
+		}
+
+	}
+	#submit {
+		width: 99.6%;
+		@extend #proj-title;
+		background-color: $primary;
+		color: white;
+		// transition: box-shadow 0.2s ease-in;
+		@include transition(0.2s, box-shadow);
+	}
+	#submit:hover {
+		@include button-box-shadow($ternary);
+		cursor: pointer;
+	}
+}
+*
+
+#feed-content-container {
+	#welcome {
+		padding-top: 0;
+		padding: 2vh;
+		padding-bottom: 0;
+		margin-top: 5vh;
+		background-color: rgb(250, 250, 250);
+		@include border-radius();
+		h1 {
+			margin-top: 0;
+		}
+	}
+	.over-proj {
+			display: flex;
+			margin-top: 50px;
+			margin-bottom: -10px;
+			@include border-radius();
+			justify-content: space-between;
+			width: 100%;
+			padding: 3vh;
+			border-bottom: 1px solid $white;
+			background-color: $white;
+			.overview-proj, .hand-in-info {
+				display: flex;
+				justify-content: space-between;
+				width: 50%;
+			}
+			h3, h4 {
+				display: inline-block;
+			}
+			h4 {
+				margin-top: 0.5vh;
+			}
+			a {
+				padding: 2vh;
+				background-color: $ternary;
+				color: white;
+				@include border-radius();
+				@include transition(0.2s, box-shadow);
+			}
+			a:hover {
+				@include button-box-shadow($primary);
+			}
+			.hand-in-button-container a {
+				background-color: $primary;
+			}
+		}
+		.overview-proj-hand-in {
+				padding-top: 4vh;
+				padding-bottom: 4vh;
+				box-shadow: 0 0 5px $ternary;
+		}
+	width: 100%;
+	// padding-top: 1vh;
+	display: flex;
+	justify-content: center;
+	.project-cards-container, .news-container {
+		padding: 5vh;
+		color: $fontColor;
+	}
+	.project-cards-container {
+		width: 70%;
+		.card:hover {
+			background-color: rgb(250, 250, 250);
+		}
+		.card {
+			height: 40vh;
+			margin-top: 50px;
+			margin-bottom:50px ;
+			width: 100%;
+			.project-cover, .project-info {
+				display: inline-block;
+				float: left;
+				// background-color: $white;
+
+			}
+			.project-info {
+				padding: 5vh;
+			}
+			.project-cover {
+				overflow: hidden;
+				width: 40%;
+				height: 100%;
+				background-size: cover;
+				background-repeat: no-repeat;
+			}
+			.project-info {
+				width: 60%;
+				height: 100%;
+			}
+		}
+	}
+	.news-container {
+		width: 30%;
+		padding-top: 50px;
+		.card {
+			// background-color: yellow;		
+			padding: 2vh;
+			margin-top: 30px;
+			background-color: rgb(250, 250, 250);
+			.news-card-date, .news-card-title {
+				display: inline-block;
+			}
+			.news-card-date {
+				background-color: $primary;
+				padding: 1vh;
+				color: white;
+			}
+			.news-card-title {
+				margin-left: 10px;
+			}
+		}
+	}
+}
+
+#overview-container {
+	display: flex;
+	padding-top: 2vh;
+	justify-content: center;
+	color: $fontColor;
+	.user-info {
+		@include border-radius();
+		min-height: 10vh;
+		@include background-image();
+		margin-top: 10px;
+		padding: 2vh;
+		background-color: $white;
+		// background-color: yellow;
+	}
+	.user-details{
+		width: 30%;
+		padding: 5vh;
+		padding-bottom: 0;
+		// height: 10vh;
+		// background-color: red;
+		.user-image {
+			height: 40vh;
+		}
+		.user-general-info {
+			margin-top: 0;
+		}
+	}
+	.proj-overview {
+		@include border-radius();
+		.overview-header {
+			padding: 2vh;
+		}
+		width: 70%;
+		margin-top: 6.5vh;
+		margin-right: 5vh;
+		.over-proj {
+			display: flex;
+			margin-top: 5px;
+			@include border-radius();
+			justify-content: space-between;
+			width: 100%;
+			padding: 3vh;
+			border-bottom: 1px solid $white;
+			background-color: $white;
+			.overview-proj, .hand-in-info {
+				display: flex;
+				justify-content: space-between;
+				width: 50%;
+			}
+			h3, h4 {
+				display: inline-block;
+			}
+			h4 {
+				margin-top: 0.5vh;
+			}
+			a {
+				padding: 2vh;
+				background-color: $ternary;
+				color: white;
+				@include border-radius();
+				@include transition(0.2s, box-shadow);
+			}
+			a:hover {
+				@include button-box-shadow($primary);
+			}
+			.hand-in-button-container a {
+				background-color: $primary;
+			}
+		}
+		.overview-proj-hand-in {
+				padding-top: 4vh;
+				padding-bottom: 4vh;
+				box-shadow: 0 0 5px $ternary;
+		}
+
+	}
+}	
+
+.cover-container {
+	width: 100%;
+	height: 50vh;
+	@include background-image();
+	background-position: initial;
+}
+.project-view-content-container {
+	color: $fontColor;
+	padding: 20vh;
+	padding-top: 1vh;
+	padding-bottom: 10vh;
+	.btn {
+		background-color: $primary;
+		color: white;
+		padding: 2vh;
+		@include border-radius();
+		// margin: 1vh;
+		// margin-top: 20vh;
+		@include transition(0.2s, box-shadow);
+	}
+	.btn:hover {
+		@include button-box-shadow($ternary);
+	}
+}
+
+.about {
+	.about-header-container-image {
+		width: 100%;
+		height: 50vh;
+		background-image: url('../assets/images/EAL_picture.jpg');
+		@include background-image();
+	}
+	.about-content {
+		padding: 30vh;
+		padding-top: 5vh;
+		padding-bottom: 15vh;	
+	}
+}

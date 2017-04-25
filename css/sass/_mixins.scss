@@ -1,0 +1,23 @@
+@mixin transition($time, $prop) {
+	-webkit-transition: $prop $time ease-in;
+	-moz-transition: $prop $time ease-in;
+	-ms-transition: $prop $time ease-in;
+	transition: $prop $time ease-in;
+}
+@mixin button-box-shadow($color) {
+	-webkit-box-shadow: inset 0 -200px $color;
+	-moz-box-shadow: inset 0 -200px $color;
+	-ms-box-shadow: inset 0 -200px $color;
+	box-shadow: inset 0 -200px $color;
+}
+@mixin border-radius() {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	border-radius: 5px;
+}
+@mixin background-image() {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
